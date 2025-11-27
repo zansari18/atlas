@@ -55,7 +55,7 @@ def logout():
     session.clear()
     return jsonify({"message": "Logged out"})
 
-@app.route("/updateLocation", methods="POST")
+@app.route("/updateLocation", methods=["POST"])
 def update_location():
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
