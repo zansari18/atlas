@@ -105,7 +105,11 @@ def ensure_user(username, password):
     if user is None:
         db.create_user(username, password)
 
-
+@app.route("/me", methods=["GET"])
+def me():
+    if "username" not in session:
+        return jsonify({"username": None}), 401
+    return jsonify({"username": session["username"]})
 # App Startup
 
 
