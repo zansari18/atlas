@@ -55,5 +55,7 @@ def get_locations():
 
     cursor.execute("SELECT username, latitude, longitude FROM users")
     return cursor.fetchall()
+
+
     
                    

@@ -95,13 +95,19 @@ def distance():
 
     return jsonify({"milesApart": round(d, 2)})
 
+def ensure_user(username, password):
+    user = db.get_user_by_username(username)
+    if user is None:
+        db.create_user(username, password)
+
 
 # App Startup
 
 
 if __name__ == "__main__":
     db.init_db()
-
+    ensure_user("Zuha", "ZA73853!")
+    ensure_user("Suwaiba", "SM73757!")
     #only run once! make 2 users
     #db.create_user("Zuha", "ZA73853!")
     #db.create_user("Suwaiba", "SM73757!")
