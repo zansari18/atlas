@@ -103,8 +103,8 @@ if __name__ == "__main__":
     db.init_db()
 
     #only run once! make 2 users
-    db.create_user("Zuha", "ZA73853!")
-    db.create_user("Suwaiba", "SM73757!")
+    #db.create_user("Zuha", "ZA73853!")
+    #db.create_user("Suwaiba", "SM73757!")
 
     port =  int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
