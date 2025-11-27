@@ -2,8 +2,7 @@ from flask import Flask, request, session, jsonify
 from flask_cors import CORS
 import os
 from math import radians, sin, cos, sqrt, atan2
-
-import db
+import models.db as db
 
 app = Flask(__name__)
 #key from Railway
