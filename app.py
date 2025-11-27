@@ -6,9 +6,14 @@ import models.db as db
 
 app = Flask(__name__)
 #key from Railway
+app.config["SESSION_COOKIE_SAMESITE"] = "None"
+app.config["SESSION_COOKIE_SECURE"] = True
 app.secret_key = os.environ.get("SECRET_KEY", "dev_secret")
 
-CORS(app, supports_credentials=True, origins=["https://zansari18.github.io"])
+CORS(app,
+     supports_credentials=True,
+     resources={r"/*": {"origins": "https://zansari18.github.io"}}
+)
  
 
 #Haversine Distance Function
