@@ -8,7 +8,7 @@ app = Flask(__name__)
 #key from Railway
 app.secret_key = os.environ.get("SECRET_KEY", "dev_secret")
 
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["https://zansari18.github.io"])
  
 
 #Haversine Distance Function
@@ -19,7 +19,7 @@ def haversine(lat1, lon1, lat2, lon2):
     lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
 
     dlat = lat2 - lat1
-    dlon = lon2 - lat1
+    dlon = lon2 - lon1
 
     a= sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2 )**2
     c = 2 * atan2(sqrt(a), sqrt(1-a))
@@ -103,8 +103,8 @@ if __name__ == "__main__":
     db.init_db()
 
     #only run once! make 2 users
-    db.create_user("Zuha", "ZA73853!")
-    db.create_user("Suwaiba", "SM73757!")
+    #db.create_user("Zuha", "ZA73853!")
+    #db.create_user("Suwaiba", "SM73757!")
 
     port =  int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
